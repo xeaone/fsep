@@ -1,0 +1,35 @@
+{
+  "name": "fsep",
+  "version": "1.0.0",
+  "description": "Is a library that promisifies all native node FS operation and brings extras into the mix.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "when": "^3.7.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node ./test/walk.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderElias/fsep.git"
+  },
+  "keywords": [
+    "walk",
+    "klaw",
+    "fs-extra",
+    "fs-promise",
+    "fs",
+    "promisified",
+    "promisify"
+  ],
+  "author": "Alexander Elias",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/AlexanderElias/fsep/issues"
+  },
+  "homepage": "https://github.com/AlexanderElias/fsep#readme"
+}
