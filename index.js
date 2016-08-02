@@ -1,11 +1,14 @@
 'use strict';
 
-var all = {};
-var Fsp = require('./lib/fsp');
+var Fs = require('./lib/fsp/fs.js');
 var Walk = require('./lib/fse/walk');
+var Valid = require('./lib/fse/valid');
 
-all = Object.assign(all, Fsp);
+var all = {};
+
+all = Object.assign(all, Fs);
 all = Object.assign(all, Walk);
+all = Object.assign(all, Valid);
 
 module.exports = all;
 

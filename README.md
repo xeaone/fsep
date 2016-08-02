@@ -29,6 +29,7 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 
 ## API
 - walk
+- valid
 
 
 ### walk
@@ -46,11 +47,32 @@ var Fsep = require('fsep');
 var options = {
 	path: '/home/user/directory',
 	filters: ['.DS_Store'],
-	ignoreDot: true
+	relative: true,
+	ignoreDot: false
 };
 
-Fsep.walk(options).then(function (items) {
-	console.log(items);
+Fsep.walk(options).then(function (files) {
+	console.log(files);
+})
+.catch(function (error) {
+	throw error;
+});
+```
+
+
+### valid
+#### valid(path)
+
+Checks if a path is valid/exists, could be any file system object. Returns `true` or `false`.
+
+```JavaScript
+var Fsep = require('fsep');
+
+Fsep.valid(path).then(function (isValid) {
+	console.log(isValid); // true || false
+})
+.catch(function (error) {
+	throw error;
 });
 ```
 
