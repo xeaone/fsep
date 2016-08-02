@@ -3,9 +3,10 @@
 var Fsep = require('../index');
 
 var options = {
-	path: '/Users/Alex/Desktop/',
-	ignoreDot: true
-	// filters: ['.DS_Store', '.blah.rtf']
+	path: '/Users/Alex/Desktop',
+	ignoreDot: true,
+	relative: true,
+	filters: ['.DS_Store', 'node_modules']
 };
 
 // path || path, options || options

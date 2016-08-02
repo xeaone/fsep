@@ -37,7 +37,8 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 Options:
 - path `string` Path to directory
 - filters `array` RegExp strings
-- ignoreDot `boolean` ignore files beginning with a dot default is `false`
+- relative `boolean` Return paths relative or absolute. Default is `true`
+- ignoreDot `boolean` Ignores files beginning with a dot. Default is `false`
 
 ```JavaScript
 var Fsep = require('fsep');
