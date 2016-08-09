@@ -19,7 +19,6 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 - ensureLink
 - ensureSymlink
 - move
-- outputFile
 - outputJson
 - readJson
 - remove
@@ -30,6 +29,7 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 - walk
 - valid
 - mkdirs
+- outputFile
 
 
 ### walk
@@ -68,8 +68,9 @@ Checks if a path is valid/exists, could be any file system object. Returns `true
 ```JavaScript
 var Fsep = require('fsep');
 
-Fsep.valid(path).then(function (isValid) {
+Fsep.valid(path).then(function (isValid, stats) {
 	console.log(isValid); // true || false
+	console.log(stats);
 })
 .catch(function (error) {
 	throw error;
@@ -88,11 +89,29 @@ var Fsep = require('fsep');
 var path = '/home/username/non/existing/dirs';
 
 Fsep.mkdirs(path).then(function () {
-	console.log('done');
+	console.log('created dirs');
 }).catch(function (error) {
 	throw error;
 });
 ```
+
+
+### outputFile ###
+#### outputFile(path, data, [options]) ####
+
+Creates a file and also directories if non existent. Overwrites file if it exists.
+
+```JavaScript
+var Fsep = require('fsep');
+
+var path = '/non/existing/path/file.js';
+var data = 'hello';
+
+Fsep.outputFile(path, data).then(function () {
+	console.log('done');
+}).catch(function (error) { throw error; });
+```
+
 
 
 

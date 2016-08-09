@@ -1,9 +1,8 @@
-'use strict';
-
 var Fsep = require('../index');
 
-var path = '/test/stuff/';
+var path = '/test/stuff/blue.js';
+var data = 'hello';
 
-Fsep.outputFile(path).then(function () {
-
+Fsep.outputFile(path, data).then(function () {
+	console.log('done');
 }).catch(function (error) { throw error; });
