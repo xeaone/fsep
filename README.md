@@ -1,5 +1,5 @@
 # FSEP
-Is a library that promisifies all native node FS operation and brings extras into the mix.
+Is a library that promisifies all native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra.
 
 Contributions Welcome!
 Submit a pull request. Currently Fsep only has one dependency it would be great to keep it that way.
@@ -7,7 +7,7 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 
 ## Features
 - Native node.js Fs methods (promisified)
-- One dependency (removable in the future)
+- One dependency (removable in the future - promises)
 - Only Promises
 
 
@@ -18,7 +18,6 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 - ensureDir
 - ensureLink
 - ensureSymlink
-- mkdirs
 - move
 - outputFile
 - outputJson
@@ -30,6 +29,7 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 ## API
 - walk
 - valid
+- mkdirs
 
 
 ### walk
@@ -75,6 +75,25 @@ Fsep.valid(path).then(function (isValid) {
 	throw error;
 });
 ```
+
+
+### mkdirs
+#### mkdirs(path, [mode])
+
+Creates directories. If the parent hierarchy doesn't exist it is created.
+
+```JavaScript
+var Fsep = require('fsep');
+
+var path = '/home/username/non/existing/dirs';
+
+Fsep.mkdirs(path).then(function () {
+	console.log('done');
+}).catch(function (error) {
+	throw error;
+});
+```
+
 
 
 ## License

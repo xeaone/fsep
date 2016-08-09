@@ -1,14 +1,18 @@
 'use strict';
 
-var Fs = require('./lib/fsp/fs.js');
-var Walk = require('./lib/fse/walk');
-var Valid = require('./lib/fse/valid');
+const Fs = require('./lib/fsp/fs.js');
+const Walk = require('./lib/fse/walk');
+const Valid = require('./lib/fse/valid');
+const OutputFile = require('./lib/fse/output-file');
+const Mkdirs = require('./lib/fse/mkdirs');
 
 var all = {};
 
 all = Object.assign(all, Fs);
 all = Object.assign(all, Walk);
 all = Object.assign(all, Valid);
+all = Object.assign(all, OutputFile);
+all = Object.assign(all, Mkdirs);
 
 module.exports = all;
 
@@ -19,7 +23,6 @@ module.exports = all;
 if (typeof Object.assign != 'function') {
 
 	Object.assign = function(target) {
-		// 'use strict';
 
 		if (target == null) throw new TypeError('Cannot convert undefined or null to object');
 
