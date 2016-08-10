@@ -68,9 +68,8 @@ Checks if a path is valid/exists, could be any file system object. Returns `true
 ```JavaScript
 var Fsep = require('fsep');
 
-Fsep.valid(path).then(function (isValid, stats) {
+Fsep.valid(path).then(function (isValid) {
 	console.log(isValid); // true || false
-	console.log(stats);
 })
 .catch(function (error) {
 	throw error;
