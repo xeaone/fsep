@@ -1,6 +1,6 @@
 {
   "name": "fsep",
-  "version": "1.4.4",
+  "version": "1.5.4",
   "description": "Is a library that promisifies all native node FS operation and brings extras into the mix.",
   "main": "index.js",
   "directories": {
@@ -11,7 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node ./test/walk.js"
+    "test": "node ./test/"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,17 @@
     "fs-extra",
     "fs-promise",
     "fs",
+    "library",
+    "promise",
     "promisified",
-    "promisify"
+    "promisify",
+    "readLine",
+    "writeLine",
+    "read",
+    "write",
+    "line",
+    "by",
+    "line"
   ],
   "author": "Alexander Elias",
   "license": "MPL-2.0",

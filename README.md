@@ -30,6 +30,7 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 - valid
 - mkdirs
 - outputFile
+- readWriteLine
 
 
 ### walk
@@ -109,6 +110,36 @@ var data = 'hello';
 Fsep.outputFile(path, data).then(function () {
 	console.log('done');
 }).catch(function (error) { throw error; });
+```
+
+
+### readWriteLine ###
+#### readWriteLine(options) ####
+
+Reads and writes a file line by line. The `line` function allows line manipulation.
+
+```JavaScript
+var Fsep = require('fsep');
+
+var options = {
+	read: { // node stream options
+		path: './rw/one.txt'
+	},
+	write: { // node stream options
+		path: './rw/two.txt',
+		flags: 'a'
+
+	},
+	line: function (line) {
+		return line.toUpperCase();
+	}
+};
+
+Fsep.readWriteLine(options).then(function () {
+	console.log('done');
+}).catch(function (error) {
+	throw error;
+});
 ```
 
 
