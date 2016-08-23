@@ -2,7 +2,7 @@
 Is a library that promisifies all native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra.
 
 Contributions Welcome!
-Submit a pull request. Currently Fsep only has one dependency it would be great to keep it that way.
+Submit a pull request. Currently Fsep only has **one dependency** it would be great to keep it that way.
 
 
 ## Features
@@ -15,7 +15,6 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 - copy
 - emptyDir
 - ensureFile
-- ensureDir
 - ensureLink
 - ensureSymlink
 - move
@@ -29,6 +28,7 @@ Submit a pull request. Currently Fsep only has one dependency it would be great 
 - walk
 - valid
 - mkdirs
+- ensureDir
 - outputFile
 - readWriteLine
 
@@ -93,6 +93,21 @@ Fsep.mkdirs(path).then(function () {
 }).catch(function (error) {
 	throw error;
 });
+```
+
+### ensureDir ###
+#### ensureDir(path) ####
+
+Creates a directory and it's path if it **does not exist**. Otherwise it does not create the directory or path if it exists.
+
+```JavaScript
+var Fsep = require('fsep');
+
+var path = '/non/existing/path/dirname';
+
+Fsep.ensureDir(path).then(function () {
+	console.log('done');
+}).catch(function (error) { throw error; });
 ```
 
 
