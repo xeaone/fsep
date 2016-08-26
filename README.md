@@ -2,7 +2,7 @@
 Is a library that promisifies all native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra.
 
 Contributions Welcome!
-Submit a pull request. Currently Fsep only has **one dependency** it would be great to keep it that way.
+Submit a pull request. Fsep only has **one dependency**.
 
 
 ## Features
@@ -14,7 +14,6 @@ Submit a pull request. Currently Fsep only has **one dependency** it would be gr
 ## TODO
 - copy
 - emptyDir
-- ensureFile
 - ensureLink
 - ensureSymlink
 - move
@@ -29,6 +28,7 @@ Submit a pull request. Currently Fsep only has **one dependency** it would be gr
 - valid
 - mkdirs
 - ensureDir
+- ensureFile
 - outputFile
 - readWriteLine
 
@@ -81,12 +81,12 @@ Fsep.valid(path).then(function (isValid) {
 ### mkdirs
 #### mkdirs(path, [mode])
 
-Creates directories. If the parent hierarchy doesn't exist it is created.
+Creates a directory and it's path if it does not exist. If the parent hierarchy doesn't exist it is created. Otherwise if the path or directory exists it is not created.
 
 ```JavaScript
 var Fsep = require('fsep');
 
-var path = '/home/username/non/existing/dirs';
+var path = '/home/non/existing/dirs';
 
 Fsep.mkdirs(path).then(function () {
 	console.log('created dirs');
@@ -97,8 +97,7 @@ Fsep.mkdirs(path).then(function () {
 
 ### ensureDir ###
 #### ensureDir(path) ####
-
-Creates a directory and it's path if it **does not exist**. Otherwise it does not create the directory or path if it exists.
+Exactly the same as `mkdirs`. Node.js `mkdir` does not overwrite the directory if it exists.
 
 ```JavaScript
 var Fsep = require('fsep');
@@ -106,6 +105,21 @@ var Fsep = require('fsep');
 var path = '/non/existing/path/dirname';
 
 Fsep.ensureDir(path).then(function () {
+	console.log('done');
+}).catch(function (error) { throw error; });
+```
+
+
+### ensureFile ###
+#### ensureFile(path, data, [options]) ####
+Ensures that the file and its directory structure exists. If the file already exists it is **not modified**.
+
+```JavaScript
+var Fsep = require('fsep');
+
+var path = '/non/existing/dirs/and/file.txt';
+
+Fsep.ensureFile(path).then(function () {
 	console.log('done');
 }).catch(function (error) { throw error; });
 ```

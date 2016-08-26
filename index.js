@@ -5,6 +5,7 @@ var all = {
 	valid: require('./lib/fse/valid'),
 	mkdirs: require('./lib/fse/mkdirs'),
 	ensureDir: require('./lib/fse/ensure-dir'),
+	ensureFile: require('./lib/fse/ensure-file'),
 	outputFile: require('./lib/fse/output-file'),
 	readWriteLine: require('./lib/fse/read-write-line')
 };
