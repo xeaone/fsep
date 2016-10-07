@@ -4,6 +4,7 @@ var all = {
 	walk: require('./lib/fse/walk'),
 	valid: require('./lib/fse/valid'),
 	mkdirs: require('./lib/fse/mkdirs'),
+	readFiles: require('./lib/fse/read-files'),
 	ensureDir: require('./lib/fse/ensure-dir'),
 	ensureFile: require('./lib/fse/ensure-file'),
 	outputFile: require('./lib/fse/output-file'),

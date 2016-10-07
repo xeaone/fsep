@@ -31,6 +31,7 @@ Submit a pull request. Fsep only has **one dependency**.
 - ensureFile
 - outputFile
 - readWriteLine
+- readFiles
 
 
 ### walk
@@ -166,6 +167,26 @@ var options = {
 
 Fsep.readWriteLine(options).then(function () {
 	console.log('done');
+}).catch(function (error) {
+	throw error;
+});
+```
+
+### readFiles ###
+#### readFiles(paths, options) ####
+
+Reads an array of files asynchronously. The result is an array of files.
+
+```JavaScript
+var Fsep = require('fsep');
+
+var paths = [
+	'/one.txt',
+	'two.txt'
+];
+
+Fsep.readFiles(paths).then(function (files) {
+	console.log(files);
 }).catch(function (error) {
 	throw error;
 });
