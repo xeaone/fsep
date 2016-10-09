@@ -32,6 +32,7 @@ Submit a pull request. Fsep only has **one dependency**.
 - outputFile
 - readWriteLine
 - readFiles
+- scaffold
 
 
 ### walk
@@ -187,6 +188,39 @@ var paths = [
 
 Fsep.readFiles(paths).then(function (files) {
 	console.log(files);
+}).catch(function (error) {
+	throw error;
+});
+```
+
+### scaffold ###
+#### scaffold(paths, data) ####
+
+Requires a path and an object or array. Makes files and folders based on object or array. End points are assumed to be file names.
+
+```JavaScript
+var Fsep = require('fsep');
+
+var data = {
+	one: 'one.txt',
+	two: 'two.txt',
+	array: [
+		'three.txt',
+		'four.txt'
+	]
+};
+
+Fsep.scaffold(path, data).then(function () {
+	console.log('done');
+	/* output
+		one
+			one.txt
+		two
+			two.txt
+		array
+			three.txt
+			four.txt
+	*/
 }).catch(function (error) {
 	throw error;
 });
