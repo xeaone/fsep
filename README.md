@@ -26,6 +26,7 @@ Submit a pull request. Fsep only has **one dependency**.
 ## API
 - walk
 - valid
+- exist
 - mkdirs
 - ensureDir
 - ensureFile
@@ -45,7 +46,7 @@ Options:
 - ignoreDot `boolean` Ignores files beginning with a dot. Default is `false`
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
 var options = {
 	path: '/home/user/directory',
@@ -56,8 +57,22 @@ var options = {
 
 Fsep.walk(options).then(function (files) {
 	console.log(files);
-})
-.catch(function (error) {
+}).catch(function (error) {
+	throw error;
+});
+```
+
+
+### exist
+#### exist(path)
+Checks if a path exists. Returns `true` or `false`. Uses `Fs.existsSync`.
+
+```JavaScript
+const Fsep = require('fsep');
+
+Fsep.exist(path).then(function (exist) {
+	console.log(exist); // true || false
+}).catch(function (error) {
 	throw error;
 });
 ```
@@ -65,16 +80,14 @@ Fsep.walk(options).then(function (files) {
 
 ### valid
 #### valid(path)
-
-Checks if a path is valid/exists, could be any file system object. Returns `true` or `false`.
+Checks if a path is valid. Returns `true` or `false`. Uses `Fs.stat`.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
 Fsep.valid(path).then(function (isValid) {
 	console.log(isValid); // true || false
-})
-.catch(function (error) {
+}).catch(function (error) {
 	throw error;
 });
 ```
@@ -82,13 +95,12 @@ Fsep.valid(path).then(function (isValid) {
 
 ### mkdirs
 #### mkdirs(path, [mode])
-
-Creates a directory and it's path if it does not exist. If the parent hierarchy doesn't exist it is created. Otherwise if the path or directory exists it is not created.
+Creates the path directories if they do not exist. If any of the directories in the path do not exists it will be created otherwise it will be ignored.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
-var path = '/home/non/existing/dirs';
+var path = '/non/existing/dir';
 
 Fsep.mkdirs(path).then(function () {
 	console.log('created dirs');
@@ -99,16 +111,18 @@ Fsep.mkdirs(path).then(function () {
 
 ### ensureDir ###
 #### ensureDir(path) ####
-Exactly the same as `mkdirs`. Node.js `mkdir` does not overwrite the directory if it exists.
+Exactly the same as `mkdirs`. If any of the directories in the path do not exists it will be created otherwise it will be ignored.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
-var path = '/non/existing/path/dirname';
+var path = '/non/existing/dir';
 
 Fsep.ensureDir(path).then(function () {
 	console.log('done');
-}).catch(function (error) { throw error; });
+}).catch(function (error) {
+	throw error;
+});
 ```
 
 
@@ -117,40 +131,42 @@ Fsep.ensureDir(path).then(function () {
 Ensures that the file and its directory structure exists. If the file already exists it is **not modified**.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
 var path = '/non/existing/dirs/and/file.txt';
 
 Fsep.ensureFile(path).then(function () {
 	console.log('done');
-}).catch(function (error) { throw error; });
+}).catch(function (error) {
+	throw error;
+});
 ```
 
 
 ### outputFile ###
 #### outputFile(path, data, [options]) ####
-
 Creates a file and also directories if non existent. Overwrites file if it exists.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
 var path = '/non/existing/path/file.js';
 var data = 'hello';
 
 Fsep.outputFile(path, data).then(function () {
 	console.log('done');
-}).catch(function (error) { throw error; });
+}).catch(function (error) {
+	throw error;
+});
 ```
 
 
 ### readWriteLine ###
 #### readWriteLine(options) ####
-
 Reads and writes a file line by line. The `line` function allows line manipulation.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
 var options = {
 	read: { // node stream options
@@ -175,11 +191,10 @@ Fsep.readWriteLine(options).then(function () {
 
 ### readFiles ###
 #### readFiles(paths, options) ####
-
 Reads an array of files asynchronously. The result is an array of files.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
 var paths = [
 	'/one.txt',
@@ -195,11 +210,10 @@ Fsep.readFiles(paths).then(function (files) {
 
 ### scaffold ###
 #### scaffold(paths, data) ####
-
 Requires a path and an object or array. Makes files and folders based on object or array. End points are assumed to be file names.
 
 ```JavaScript
-var Fsep = require('fsep');
+const Fsep = require('fsep');
 
 var data = {
 	one: 'one.txt',
@@ -225,12 +239,3 @@ Fsep.scaffold(path, data).then(function () {
 	throw error;
 });
 ```
-
-
-
-
-## License
-
-Licensed Under MPL 2.0
-
-Copyright (c) 2016 [Alexander Elias](https://github.com/AlexanderElias/)

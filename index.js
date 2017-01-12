@@ -1,25 +1,4 @@
-'use strict';
 
-var all = {
-	walk: require('./lib/fse/walk'),
-	valid: require('./lib/fse/valid'),
-	mkdirs: require('./lib/fse/mkdirs'),
-	scaffold: require('./lib/fse/scaffold'),
-	readFiles: require('./lib/fse/read-files'),
-	ensureDir: require('./lib/fse/ensure-dir'),
-	ensureFile: require('./lib/fse/ensure-file'),
-	outputFile: require('./lib/fse/output-file'),
-	readWriteLine: require('./lib/fse/read-write-line')
-};
-
-all = Object.assign(all, require('./lib/fsp/fs.js'));
-
-module.exports = all;
-
-/*
-	Pollyfill
-	Object.assign
-*/
 if (typeof Object.assign != 'function') {
 	Object.assign = function(target) {
 		if (target == null) throw new TypeError('Cannot convert undefined or null to object');
@@ -35,3 +14,18 @@ if (typeof Object.assign != 'function') {
 		return target;
 	};
 }
+
+var all = Object.assign({}, require('./lib/fsp/fs.js'));
+
+all.walk = require('./lib/fse/walk');
+all.exist = require('./lib/fse/exist');
+all.valid = require('./lib/fse/valid');
+all.mkdirs = require('./lib/fse/mkdirs');
+all.scaffold = require('./lib/fse/scaffold');
+all.readFiles = require('./lib/fse/read-files');
+all.ensureDir = require('./lib/fse/ensure-dir');
+all.ensureFile = require('./lib/fse/ensure-file');
+all.outputFile = require('./lib/fse/output-file');
+all.readWriteLine = require('./lib/fse/read-write-line');
+
+module.exports = all;

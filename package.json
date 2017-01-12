@@ -1,6 +1,6 @@
 {
   "name": "fsep",
-  "version": "1.9.7",
+  "version": "1.9.9",
   "description": "Is a library that promisifies all native node FS operation and brings extras into the mix.",
   "main": "index.js",
   "directories": {
@@ -11,7 +11,11 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node ./test/"
+	"valid": "node ./test/valid.js",
+	"exist": "node ./test/exist.js",
+	"ensureDir": "node ./test/ensure-dir.js",
+	"ensureFile": "node ./test/ensure-file.js",
+    "mkdirs": "node ./test/mkdirs.js"
   },
   "repository": {
     "type": "git",
