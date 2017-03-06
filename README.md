@@ -94,16 +94,18 @@ Fsep.valid(path).then(function (isValid) {
 
 
 ### mkdirs
-#### mkdirs(path, [mode])
-Creates the path directories if they do not exist. If any of the directories in the path do not exists it will be created otherwise it will be ignored.
+#### mkdirs(path, [mode || cwd])
+Creates the path directories if they do not exist. If any of the directories in the path do not exists it will be created otherwise it will be ignored. Accepts a `mode` and `cwd` parameter.
+The `cwd` parameter will change the start location of the directory creation, the path can still be relative or absolute.
 
 ```JavaScript
 const Fsep = require('fsep');
 
-var path = '/non/existing/dir';
+var cwd = '/exists'; // change the start to 'also-exists'
+var path = '/exists/also-exists/non-exists';
 
-Fsep.mkdirs(path).then(function () {
-	console.log('created dirs');
+Fsep.mkdirs(path, cwd).then(function () {
+	console.log('created non-exists directory');
 }).catch(function (error) {
 	throw error;
 });
