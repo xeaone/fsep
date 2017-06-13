@@ -4,7 +4,6 @@ Is a library that promisifies the native node FS operation and brings extras int
 
 ## Features
 - Native node.js Fs methods (promisified)
-- One dependency (removable in the future - promises)
 - Only Promises
 
 
