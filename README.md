@@ -33,8 +33,7 @@ Is a library that promisifies the native node FS operation and brings extras int
 - scaffold
 
 
-### walk
-#### walk(path, [options])  walk(options)
+### walk(path, [options])  walk(options)
 
 Options:
 - path `string` Path to directory
@@ -60,8 +59,7 @@ Fsep.walk(options).then(function (files) {
 ```
 
 
-### exist
-#### exist(path)
+### exist(path)
 Checks if a path exists. Returns `true` or `false`. Uses `Fs.existsSync`.
 
 ```JavaScript
@@ -75,8 +73,7 @@ Fsep.exist(path).then(function (exist) {
 ```
 
 
-### valid
-#### valid(path)
+### valid(path)
 Checks if a path is valid. Returns `true` or `false`. Uses `Fs.stat`.
 
 ```JavaScript
@@ -90,8 +87,7 @@ Fsep.valid(path).then(function (isValid) {
 ```
 
 
-### mkdirs
-#### mkdirs(path, [mode || cwd])
+### mkdirs(path, [mode || cwd])
 Creates the path directories if they do not exist. If any of the directories in the path do not exists it will be created otherwise it will be ignored. Accepts a `mode` and `cwd` parameter.
 The `cwd` parameter will change the start location of the directory creation, the path can still be relative or absolute.
 
@@ -108,8 +104,7 @@ Fsep.mkdirs(path, cwd).then(function () {
 });
 ```
 
-### ensureDir ###
-#### ensureDir(path, [mode || cwd]) ####
+### ensureDir(path, [mode || cwd])
 Exactly the same as `mkdirs`. If any of the directories in the path do not exists it will be created otherwise it will be ignored.
 
 ```JavaScript
@@ -125,8 +120,7 @@ Fsep.ensureDir(path).then(function () {
 ```
 
 
-### ensureFile ###
-#### ensureFile(path, data, [options], [mode || cwd]) ####
+### ensureFile(path, data, [options], [mode || cwd])
 Ensures that the file and its directory structure exists. If the file already exists it is **not modified**.
 
 ```JavaScript
@@ -142,7 +136,7 @@ Fsep.ensureFile(path).then(function () {
 ```
 
 
-#### ensureSymlink(source, target, type, [mode || cwd]) ####
+### ensureSymlink(source, target, type, [mode || cwd])
 Ensures that the symlink and its directory structure exists. If the file already exists it is **not modified**.
 
 ```JavaScript
@@ -158,8 +152,7 @@ Fsep.ensureSymlink(source, target).then(function () {
 ```
 
 
-### outputFile ###
-#### outputFile(path, data, [options]) ####
+### outputFile(path, data, [options])
 Creates a file and also directories if non existent. Overwrites file if it exists.
 
 ```JavaScript
@@ -176,8 +169,7 @@ Fsep.outputFile(path, data).then(function () {
 ```
 
 
-### readWriteLine ###
-#### readWriteLine(options) ####
+### readWriteLine(options)
 Reads and writes a file line by line. The `line` function allows line manipulation.
 
 ```JavaScript
@@ -204,8 +196,7 @@ Fsep.readWriteLine(options).then(function () {
 });
 ```
 
-### readFiles ###
-#### readFiles(paths, options) ####
+### readFiles(paths, options)
 Reads an array of files asynchronously. The result is an array of files.
 
 ```JavaScript
@@ -223,8 +214,7 @@ Fsep.readFiles(paths).then(function (files) {
 });
 ```
 
-### scaffold ###
-#### scaffold(paths, data) ####
+### scaffold(paths, data)
 Requires a path and an object or array. Makes files and folders based on object or array. End points are assumed to be file names.
 
 ```JavaScript
