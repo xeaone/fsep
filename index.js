@@ -15,17 +15,19 @@ if (typeof Object.assign != 'function') {
 	};
 }
 
-var all = Object.assign({}, require('./lib/fsp/fs.js'));
+var Fsep = Object.assign({}, require('./lib/fs'));
 
-all.walk = require('./lib/fse/walk');
-all.exist = require('./lib/fse/exist');
-all.valid = require('./lib/fse/valid');
-all.mkdirs = require('./lib/fse/mkdirs');
-all.scaffold = require('./lib/fse/scaffold');
-all.readFiles = require('./lib/fse/read-files');
-all.ensureDir = require('./lib/fse/ensure-dir');
-all.ensureFile = require('./lib/fse/ensure-file');
-all.outputFile = require('./lib/fse/output-file');
-all.readWriteLine = require('./lib/fse/read-write-line');
+Fsep.lift = require('./lib/lift');
+Fsep.walk = require('./lib/walk');
+Fsep.exist = require('./lib/exist');
+Fsep.valid = require('./lib/valid');
+Fsep.mkdirs = require('./lib/mkdirs');
+Fsep.scaffold = require('./lib/scaffold');
+Fsep.readFiles = require('./lib/read-files');
+Fsep.ensureDir = require('./lib/ensure-dir');
+Fsep.ensureFile = require('./lib/ensure-file');
+Fsep.outputFile = require('./lib/output-file');
+Fsep.ensureSymlink = require('./lib/ensure-symlink');
+Fsep.readWriteLine = require('./lib/read-write-line');
 
-module.exports = all;
+module.exports = Fsep;

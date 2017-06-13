@@ -1,8 +1,5 @@
 # FSEP
-Is a library that promisifies all native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra.
-
-Contributions Welcome!
-Submit a pull request. Fsep only has **one dependency**.
+Is a library that promisifies the native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra. Contributions Welcome! Submit a pull request. Fsep has **No Dependency**.
 
 
 ## Features
@@ -15,7 +12,6 @@ Submit a pull request. Fsep only has **one dependency**.
 - copy
 - emptyDir
 - ensureLink
-- ensureSymlink
 - move
 - outputJson
 - readJson
@@ -30,6 +26,7 @@ Submit a pull request. Fsep only has **one dependency**.
 - mkdirs
 - ensureDir
 - ensureFile
+- ensureSymlink
 - outputFile
 - readWriteLine
 - readFiles
@@ -58,7 +55,7 @@ var options = {
 Fsep.walk(options).then(function (files) {
 	console.log(files);
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
@@ -73,7 +70,7 @@ const Fsep = require('fsep');
 Fsep.exist(path).then(function (exist) {
 	console.log(exist); // true || false
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
@@ -88,7 +85,7 @@ const Fsep = require('fsep');
 Fsep.valid(path).then(function (isValid) {
 	console.log(isValid); // true || false
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
@@ -107,12 +104,12 @@ var path = '/exists/also-exists/non-exists';
 Fsep.mkdirs(path, cwd).then(function () {
 	console.log('created non-exists directory');
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
 ### ensureDir ###
-#### ensureDir(path) ####
+#### ensureDir(path, [mode || cwd]) ####
 Exactly the same as `mkdirs`. If any of the directories in the path do not exists it will be created otherwise it will be ignored.
 
 ```JavaScript
@@ -123,13 +120,13 @@ var path = '/non/existing/dir';
 Fsep.ensureDir(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
 
 ### ensureFile ###
-#### ensureFile(path, data, [options]) ####
+#### ensureFile(path, data, [options], [mode || cwd]) ####
 Ensures that the file and its directory structure exists. If the file already exists it is **not modified**.
 
 ```JavaScript
@@ -140,7 +137,23 @@ var path = '/non/existing/dirs/and/file.txt';
 Fsep.ensureFile(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	throw error;
+	console.log(error);
+});
+```
+
+
+#### ensureSymlink(source, target, type, [mode || cwd]) ####
+Ensures that the symlink and its directory structure exists. If the file already exists it is **not modified**.
+
+```JavaScript
+const Fsep = require('fsep');
+const src = '/existing/folders/file.txt';
+const dst = '/non/existing/folders/file.txt';
+
+Fsep.ensureSymlink(source, target).then(function () {
+	console.log('symlink created');
+}).catch(function (error) {
+	console.log(error);
 });
 ```
 
@@ -158,7 +171,7 @@ var data = 'hello';
 Fsep.outputFile(path, data).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
@@ -187,7 +200,7 @@ var options = {
 Fsep.readWriteLine(options).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
@@ -206,7 +219,7 @@ var paths = [
 Fsep.readFiles(paths).then(function (files) {
 	console.log(files);
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
 
@@ -238,6 +251,6 @@ Fsep.scaffold(path, data).then(function () {
 			four.txt
 	*/
 }).catch(function (error) {
-	throw error;
+	console.log(error);
 });
 ```
