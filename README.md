@@ -20,6 +20,7 @@ Is a library that promisifies the native node FS operation and brings extras int
 
 
 ## API
+- lift
 - walk
 - valid
 - exist
@@ -33,7 +34,18 @@ Is a library that promisifies the native node FS operation and brings extras int
 - scaffold
 
 
-### walk(path, [options])  walk(options)
+### lift(data)
+Promisifies the data parameter. Accepts a Function, Array, or Object.
+
+```JavaScript
+const Fsep = require('fsep');
+const Dns = require('dns');
+
+var dns = Fsep.lift(Dns);
+```
+
+
+### walk(path, [options])
 
 Options:
 - path `string` Path to directory
