@@ -1,6 +1,6 @@
 {
   "name": "fsep",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Fsep is a library that promisifies the native node FS operation and brings extras into the mix.",
   "main": "index.js",
   "directories": {
