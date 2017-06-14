@@ -23,6 +23,7 @@ Fsep.exist = require('./lib/exist');
 Fsep.valid = require('./lib/valid');
 Fsep.mkdirs = require('./lib/mkdirs');
 Fsep.scaffold = require('./lib/scaffold');
+Fsep.emptyDir = require('./lib/empty-dir');
 Fsep.readFiles = require('./lib/read-files');
 Fsep.ensureDir = require('./lib/ensure-dir');
 Fsep.ensureFile = require('./lib/ensure-file');

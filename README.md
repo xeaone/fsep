@@ -9,7 +9,6 @@ Is a library that promisifies the native node FS operation and brings extras int
 
 ## TODO
 - copy
-- emptyDir
 - ensureLink
 - move
 - outputJson
@@ -24,6 +23,7 @@ Is a library that promisifies the native node FS operation and brings extras int
 - valid
 - exist
 - mkdirs
+- emptyDir
 - ensureDir
 - ensureFile
 - ensureSymlink
@@ -114,6 +114,25 @@ Fsep.mkdirs(path, cwd).then(function () {
 	console.log(error);
 });
 ```
+
+### emptyDir(path, safe)
+Deletes the contents of a directory if it exists and is not empty. This is recursive so be careful. Same as `rm -r`.
+
+- `path: String` Path to the direcotry to empty.
+- `safe: Boolean` Default is true which throws an error if you try to empty the root of the file system.
+
+```JavaScript
+const Fsep = require('fsep');
+
+var path = '/home/username/dirs'; // contains folders and files
+
+Fsep.emptyDir(path).then(function () {
+	console.log('done');
+}).catch(function (error) {
+	console.log(error);
+});
+```
+
 
 ### ensureDir(path, [mode || cwd])
 Exactly the same as `mkdirs`. If any of the directories in the path do not exists it will be created otherwise it will be ignored.
