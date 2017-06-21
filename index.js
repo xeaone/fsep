@@ -17,7 +17,6 @@ if (typeof Object.assign != 'function') {
 
 var Fsep = Object.assign({}, require('./lib/fs'));
 
-Fsep.lift = require('./lib/lift');
 Fsep.walk = require('./lib/walk');
 Fsep.exist = require('./lib/exist');
 Fsep.valid = require('./lib/valid');

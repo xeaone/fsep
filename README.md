@@ -18,7 +18,6 @@ Is a library that promisifies the native node FS operation and brings extras int
 
 
 ## API
-- lift
 - walk
 - valid
 - exist
@@ -33,14 +32,8 @@ Is a library that promisifies the native node FS operation and brings extras int
 - scaffold
 
 
-### lift(data)
-Promisifies the data parameter. Accepts a Function, Array, or Object.
-
-```JavaScript
-const Fsep = require('fsep');
-const Dns = require('dns');
-
-var dns = Fsep.lift(Dns);
+### lift
+Lift removed please use the library https://github.com/AlexanderElias/promise-tool.
 ```
 
 
