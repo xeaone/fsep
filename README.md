@@ -25,8 +25,10 @@ Is a library that promisifies the native node FS operation and brings extras int
 - emptyDir
 - ensureDir
 - ensureFile
+- ensureFolder
 - ensureSymlink
 - outputFile
+- outputFolder
 - readWriteLine
 - readFiles
 - scaffold
@@ -91,17 +93,17 @@ Fsep.valid(path).then(function (isValid) {
 ```
 
 
-### mkdirs(path, [mode || cwd])
+### outputFolder, mkdirs(path[,mode,cwd])
 Creates the path directories if they do not exist. If any of the directories in the path do not exists it will be created otherwise it will be ignored. Accepts a `mode` and `cwd` parameter.
 The `cwd` parameter will change the start location of the directory creation, the path can still be relative or absolute.
 
 ```JavaScript
 const Fsep = require('fsep');
 
-var cwd = '/exists'; // change the start to 'also-exists'
-var path = '/exists/also-exists/non-exists';
+var cwd = process.cwd();
+var path = 'exist/not-exists/also-not-exists';
 
-Fsep.mkdirs(path, cwd).then(function () {
+Fsep.outputFolder(path, cwd).then(function () {
 	console.log('created non-exists directory');
 }).catch(function (error) {
 	console.log(error);
