@@ -10,21 +10,21 @@ Promise.resolve().then(function () {
 		console.error(error);
 	});
 
-	Fsep.mkdirs(relativePath, __dirname).catch(function (error) {
-		console.error(error);
-	});
+	// Fsep.mkdirs(relativePath, __dirname).catch(function (error) {
+	// 	console.error(error);
+	// });
 
-	Fsep.mkdirs(absolutePath, __dirname).catch(function (error) {
-		console.error(error);
-	});
+	// Fsep.mkdirs(absolutePath, __dirname).catch(function (error) {
+	// 	console.error(error);
+	// });
 
-	Fsep.mkdirs(relativePath).catch(function (error) {
-		console.error(error);
-	});
+	// Fsep.mkdirs(relativePath).catch(function (error) {
+	// 	console.error(error);
+	// });
 
-	Fsep.mkdirs(absolutePath).catch(function (error) {
-		console.error(error);
-	});
+	// Fsep.mkdirs(absolutePath).catch(function (error) {
+	// 	console.error(error);
+	// });
 
 }).then(function () {
 	console.log('done');
