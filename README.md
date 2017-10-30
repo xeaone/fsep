@@ -22,34 +22,34 @@ Is a library that promisifies the native node FS operation and brings extras int
 ## API
 - walk
 - exist
-- scaffold
 
 - mkdirs
 
 - emptyFolder
 
+- outputFile
+- outputFolder
+
 - ensureFile
 - ensureFolder
 - ensureSymlink
 
-- outputFile
-- outputFolder
-
+- scaffold
 - readFiles
 - readWriteLine
 
 
 ### walk(path, [options])
-Options:
-- path `string` Path to directory
-- filters `array` RegExp strings
-- relative `boolean` Return paths relative or absolute. Default is `true`
-- ignoreDot `boolean` Ignores files beginning with a dot. Default is `false`
+- `options: Object`
+	- `path: String` Path to directory
+	- `filters: Array` RegExp strings
+	- `relative: Boolean` Return paths relative or absolute. Default is `true`
+	- `ignoreDot: Boolean` Ignores files beginning with a dot. Default is `false`
 
 ```js
 const Fsep = require('fsep');
 
-var options = {
+const options = {
 	path: '/home/user/directory',
 	filters: ['.DS_Store'],
 	relative: true,
@@ -59,7 +59,7 @@ var options = {
 Fsep.walk(options).then(function (files) {
 	console.log(files);
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -73,7 +73,7 @@ const Fsep = require('fsep');
 Fsep.exist(path).then(function (exist) {
 	console.log(exist); // true || false
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -88,7 +88,7 @@ const path = '/non/existing/dir';
 Fsep.mkdirs(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -104,7 +104,7 @@ var data = 'hello';
 Fsep.outputFile(path, data).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -118,7 +118,7 @@ const path = '/non/existing/dir';
 Fsep.outputFolder(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -132,7 +132,7 @@ const path = '/non/existing/dir';
 Fsep.ensureFolder(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -147,7 +147,7 @@ var path = '/non/existing/dirs/and/file.txt';
 Fsep.ensureFile(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -162,7 +162,7 @@ const dst = '/non/existing/folders/file.txt';
 Fsep.ensureSymlink(source, target).then(function () {
 	console.log('symlink created');
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -179,7 +179,38 @@ var path = '/home/username/dirs'; // contains folders and files
 Fsep.emptyFolder(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
+});
+```
+
+
+### scaffold(paths, data)
+Requires a path and an object or array. Makes files and folders based on object or array. End points are assumed to be file names.
+```js
+const Fsep = require('fsep');
+
+const data = {
+	one: 'one.txt',
+	two: 'two.txt',
+	array: [
+		'three.txt',
+		'four.txt'
+	]
+};
+
+Fsep.scaffold(path, data).then(function () {
+	console.log('done');
+	/* output
+		one
+			one.txt
+		two
+			two.txt
+		array
+			three.txt
+			four.txt
+	*/
+}).catch(function (error) {
+	console.error(error);
 });
 ```
 
@@ -198,7 +229,7 @@ var paths = [
 Fsep.readFiles(paths).then(function (files) {
 	console.log(files);
 }).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
 
@@ -225,37 +256,6 @@ var options = {
 Fsep.readWriteLine(options).then(function () {
 	console.log('done');
 }).catch(function (error) {
-	console.log(error);
-});
-```
-
-
-### scaffold(paths, data)
-Requires a path and an object or array. Makes files and folders based on object or array. End points are assumed to be file names.
-```js
-const Fsep = require('fsep');
-
-var data = {
-	one: 'one.txt',
-	two: 'two.txt',
-	array: [
-		'three.txt',
-		'four.txt'
-	]
-};
-
-Fsep.scaffold(path, data).then(function () {
-	console.log('done');
-	/* output
-		one
-			one.txt
-		two
-			two.txt
-		array
-			three.txt
-			four.txt
-	*/
-}).catch(function (error) {
-	console.log(error);
+	console.error(error);
 });
 ```
