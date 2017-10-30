@@ -1,5 +1,7 @@
+
+
 # FSEP
-Is a library that promisifies the native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra. Contributions Welcome! Submit a pull request. Fsep has **No Dependency**.
+Is a library that promisifies the native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra. Contributions Welcome! Submit a pull request. Fsep has **One Dependency**.
 
 
 ## Features
@@ -19,35 +21,32 @@ Is a library that promisifies the native node FS operation and brings extras int
 
 ## API
 - walk
-- valid
 - exist
+- scaffold
+
 - mkdirs
-- emptyDir
-- ensureDir
+
+- emptyFolder
+
 - ensureFile
 - ensureFolder
 - ensureSymlink
+
 - outputFile
 - outputFolder
-- readWriteLine
+
 - readFiles
-- scaffold
-
-
-### lift
-Lift removed please use the library https://github.com/AlexanderElias/promise-tool.
-```
+- readWriteLine
 
 
 ### walk(path, [options])
-
 Options:
 - path `string` Path to directory
 - filters `array` RegExp strings
 - relative `boolean` Return paths relative or absolute. Default is `true`
 - ignoreDot `boolean` Ignores files beginning with a dot. Default is `false`
 
-```JavaScript
+```js
 const Fsep = require('fsep');
 
 var options = {
@@ -66,9 +65,9 @@ Fsep.walk(options).then(function (files) {
 
 
 ### exist(path)
-Checks if a path exists. Returns `true` or `false`. Uses `Fs.existsSync`.
+Checks if a path exists. Returns `true` or `false`. Uses `Fs.stat`.
 
-```JavaScript
+```js
 const Fsep = require('fsep');
 
 Fsep.exist(path).then(function (exist) {
@@ -78,50 +77,15 @@ Fsep.exist(path).then(function (exist) {
 });
 ```
 
-
-### valid(path)
-Checks if a path is valid. Returns `true` or `false`. Uses `Fs.stat`.
-
-```JavaScript
-const Fsep = require('fsep');
-
-Fsep.valid(path).then(function (isValid) {
-	console.log(isValid); // true || false
-}).catch(function (error) {
-	console.log(error);
-});
-```
-
-
-### outputFolder, mkdirs(path[,mode,cwd])
-Creates the path directories if they do not exist. If any of the directories in the path do not exists it will be created otherwise it will be ignored. Accepts a `mode` and `cwd` parameter.
+### mkdirs(path [,mode, cwd])
+Creates the path folders if they do not exist. Accepts a `mode` and `cwd` parameter.
 The `cwd` parameter will change the start location of the directory creation, the path can still be relative or absolute.
 
-```JavaScript
+```js
 const Fsep = require('fsep');
+const path = '/non/existing/dir';
 
-var cwd = process.cwd();
-var path = 'exist/not-exists/also-not-exists';
-
-Fsep.outputFolder(path, cwd).then(function () {
-	console.log('created non-exists directory');
-}).catch(function (error) {
-	console.log(error);
-});
-```
-
-### emptyDir(path, safe)
-Deletes the contents of a directory if it exists and is not empty. This is recursive so be careful. Same as `rm -r`.
-
-- `path: String` Path to the direcotry to empty.
-- `safe: Boolean` Default is true which throws an error if you try to empty the root of the file system.
-
-```JavaScript
-const Fsep = require('fsep');
-
-var path = '/home/username/dirs'; // contains folders and files
-
-Fsep.emptyDir(path).then(function () {
+Fsep.mkdirs(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
 	console.log(error);
@@ -129,15 +93,43 @@ Fsep.emptyDir(path).then(function () {
 ```
 
 
-### ensureDir(path, [mode || cwd])
-Exactly the same as `mkdirs`. If any of the directories in the path do not exists it will be created otherwise it will be ignored.
-
-```JavaScript
+### outputFile(path, data, [options])
+Creates a file and also directories if non existent. Overwrites file if it exists.
+```js
 const Fsep = require('fsep');
 
-var path = '/non/existing/dir';
+var path = '/non/existing/path/file.js';
+var data = 'hello';
 
-Fsep.ensureDir(path).then(function () {
+Fsep.outputFile(path, data).then(function () {
+	console.log('done');
+}).catch(function (error) {
+	console.log(error);
+});
+```
+
+
+### outputFolder(path [,mode, cwd])
+Creates folders in path if they do not exist.
+```js
+const Fsep = require('fsep');
+const path = '/non/existing/dir';
+
+Fsep.outputFolder(path).then(function () {
+	console.log('done');
+}).catch(function (error) {
+	console.log(error);
+});
+```
+
+
+### ensureFolder(path, [,mode, cwd])
+Creates folders in path if they do not exist.
+```js
+const Fsep = require('fsep');
+const path = '/non/existing/dir';
+
+Fsep.ensureFolder(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
 	console.log(error);
@@ -147,8 +139,7 @@ Fsep.ensureDir(path).then(function () {
 
 ### ensureFile(path, data, [options], [mode || cwd])
 Ensures that the file and its directory structure exists. If the file already exists it is **not modified**.
-
-```JavaScript
+```js
 const Fsep = require('fsep');
 
 var path = '/non/existing/dirs/and/file.txt';
@@ -163,8 +154,7 @@ Fsep.ensureFile(path).then(function () {
 
 ### ensureSymlink(source, target, type, [mode || cwd])
 Ensures that the symlink and its directory structure exists. If the file already exists it is **not modified**.
-
-```JavaScript
+```js
 const Fsep = require('fsep');
 const src = '/existing/folders/file.txt';
 const dst = '/non/existing/folders/file.txt';
@@ -177,16 +167,16 @@ Fsep.ensureSymlink(source, target).then(function () {
 ```
 
 
-### outputFile(path, data, [options])
-Creates a file and also directories if non existent. Overwrites file if it exists.
-
-```JavaScript
+### emptyFolder(path, safe)
+Deletes the contents of a directory if it exists and is not empty. This is recursive so be careful. Same as `rm -r`.
+- `path: String` Path to the direcotry to empty.
+- `safe: Boolean` Default is true which throws an error if you try to empty the root of the file system.
+```js
 const Fsep = require('fsep');
 
-var path = '/non/existing/path/file.js';
-var data = 'hello';
+var path = '/home/username/dirs'; // contains folders and files
 
-Fsep.outputFile(path, data).then(function () {
+Fsep.emptyFolder(path).then(function () {
 	console.log('done');
 }).catch(function (error) {
 	console.log(error);
@@ -194,10 +184,28 @@ Fsep.outputFile(path, data).then(function () {
 ```
 
 
+### readFiles(paths, options)
+Reads an array of files asynchronously. The result is an array of files.
+
+```js
+const Fsep = require('fsep');
+
+var paths = [
+	'/one.txt',
+	'two.txt'
+];
+
+Fsep.readFiles(paths).then(function (files) {
+	console.log(files);
+}).catch(function (error) {
+	console.log(error);
+});
+```
+
 ### readWriteLine(options)
 Reads and writes a file line by line. The `line` function allows line manipulation.
 
-```JavaScript
+```js
 const Fsep = require('fsep');
 
 var options = {
@@ -221,28 +229,10 @@ Fsep.readWriteLine(options).then(function () {
 });
 ```
 
-### readFiles(paths, options)
-Reads an array of files asynchronously. The result is an array of files.
-
-```JavaScript
-const Fsep = require('fsep');
-
-var paths = [
-	'/one.txt',
-	'two.txt'
-];
-
-Fsep.readFiles(paths).then(function (files) {
-	console.log(files);
-}).catch(function (error) {
-	console.log(error);
-});
-```
 
 ### scaffold(paths, data)
 Requires a path and an object or array. Makes files and folders based on object or array. End points are assumed to be file names.
-
-```JavaScript
+```js
 const Fsep = require('fsep');
 
 var data = {
