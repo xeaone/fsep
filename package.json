@@ -1,47 +1,47 @@
 {
-  "name": "fsep",
-  "version": "2.1.0",
-  "description": "Fsep is a library that promisifies the native node FS operation and brings extras into the mix.",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {
-    "promise-tool": "^1.1.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "exist": "node ./test/exist.js",
-    "ensureFile": "node ./test/ensure-file.js",
-    "ensureFolder": "node ./test/ensure-folder.js",
-    "mkdirs": "node ./test/mkdirs.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AlexanderElias/fsep.git"
-  },
-  "keywords": [
-    "walk",
-    "klaw",
-    "fs-extra",
-    "fs-promise",
-    "fs",
-    "library",
-    "promise",
-    "promisified",
-    "promisify",
-    "readLine",
-    "writeLine",
-    "read",
-    "write",
-    "line",
-    "by",
-    "line"
-  ],
-  "author": "Alexander Elias",
-  "license": "MPL-2.0",
-  "bugs": {
-    "url": "https://github.com/AlexanderElias/fsep/issues"
-  },
-  "homepage": "https://github.com/AlexanderElias/fsep#readme"
+	"name": "fsep",
+	"version": "2.1.0",
+	"description": "Fsep is a library that promisifies the native node FS operation and brings extras into the mix.",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"dependencies": {
+		"promise-tool": "^1.1.1"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"exist": "node ./test/exist.js",
+		"ensureFile": "node ./test/ensure-file.js",
+		"ensureFolder": "node ./test/ensure-folder.js",
+		"mkdirs": "node ./test/mkdirs.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AlexanderElias/fsep.git"
+	},
+	"keywords": [
+		"walk",
+		"klaw",
+		"fs-extra",
+		"fs-promise",
+		"fs",
+		"library",
+		"promise",
+		"promisified",
+		"promisify",
+		"readLine",
+		"writeLine",
+		"read",
+		"write",
+		"line",
+		"by",
+		"line"
+	],
+	"author": "Alexander Elias",
+	"license": "MPL-2.0",
+	"bugs": {
+		"url": "https://github.com/AlexanderElias/fsep/issues"
+	},
+	"homepage": "https://github.com/AlexanderElias/fsep#readme"
 }
