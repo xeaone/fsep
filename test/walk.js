@@ -1,18 +1,17 @@
 'use strict';
 
-var Fsep = require('../index');
+const Fsep = require('../index');
 
-var options = {
-	path: '/Users/Alex/Desktop',
+const path = '/Users/Alex/Desktop';
+
+const options = {
+	relative: false,
 	ignoreDot: true,
-	relative: true,
 	filters: ['.DS_Store', 'node_modules']
 };
 
-// path || path, options || options
-Fsep.walk(options).then(function (data) {
-	console.log(data);
-})
-.catch(function (error) {
-	throw error;
+Fsep.walk(path, options).then(function (files) {
+	console.log(files);
+}).catch(function (error) {
+	console.error(error);
 });

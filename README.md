@@ -43,20 +43,19 @@ Is a library that promisifies the native node FS operation and brings extras int
 - `options: Object`
 	- `path: String` Path to directory
 	- `filters: Array` RegExp strings
-	- `relative: Boolean` Return paths relative or absolute. Default is `true`
-	- `ignoreDot: Boolean` Ignores files beginning with a dot. Default is `false`
+	- `relative: Boolean` Return paths relative or absolute. Default is `false`
+	- `ignoreDot: Boolean` Ignores files beginning with a dot. Default is `true`
 
 ```js
 const Fsep = require('fsep');
-
+const path = '/home/user/directory';
 const options = {
-	path: '/home/user/directory',
-	filters: ['.DS_Store'],
-	relative: true,
-	ignoreDot: false
+	relative: false,
+	ignoreDot: true,
+	filters: ['.DS_Store']
 };
 
-Fsep.walk(options).then(function (files) {
+Fsep.walk(path, options).then(function (files) {
 	console.log(files);
 }).catch(function (error) {
 	console.error(error);
