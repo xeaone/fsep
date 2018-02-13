@@ -62,7 +62,6 @@ Fsep.walk(path, options).then(function (files) {
 });
 ```
 
-
 ### exist(path)
 Checks if a path exists. Returns `true` or `false`. Uses `Fs.stat`.
 
@@ -76,9 +75,8 @@ Fsep.exist(path).then(function (exist) {
 });
 ```
 
-### mkdirs(path [,mode, cwd])
-Creates the path folders if they do not exist. Accepts a `mode` and `cwd` parameter.
-The `cwd` parameter will change the start location of the directory creation, the path can still be relative or absolute.
+### mkdirs(path [,mode])
+Creates the path folders if they do not exist. Accepts a `mode` parameter.
 
 ```js
 const Fsep = require('fsep');
@@ -90,7 +88,6 @@ Fsep.mkdirs(path).then(function () {
 	console.error(error);
 });
 ```
-
 
 ### outputFile(path, data, [options])
 Creates a file and also directories if non existent. Overwrites file if it exists.
@@ -107,7 +104,6 @@ Fsep.outputFile(path, data).then(function () {
 });
 ```
 
-
 ### outputFolder(path [,mode, cwd])
 Creates folders in path if they do not exist.
 ```js
@@ -121,7 +117,6 @@ Fsep.outputFolder(path).then(function () {
 });
 ```
 
-
 ### ensureFolder(path, [,mode, cwd])
 Creates folders in path if they do not exist.
 ```js
@@ -134,7 +129,6 @@ Fsep.ensureFolder(path).then(function () {
 	console.error(error);
 });
 ```
-
 
 ### ensureFile(path, data, [options], [mode || cwd])
 Ensures that the file and its directory structure exists. If the file already exists it is **not modified**.
@@ -150,7 +144,6 @@ Fsep.ensureFile(path).then(function () {
 });
 ```
 
-
 ### ensureSymlink(source, target, type, [mode || cwd])
 Ensures that the symlink and its directory structure exists. If the file already exists it is **not modified**.
 ```js
@@ -164,7 +157,6 @@ Fsep.ensureSymlink(source, target).then(function () {
 	console.error(error);
 });
 ```
-
 
 ### emptyFolder(path, safe)
 Deletes the contents of a directory if it exists and is not empty. This is recursive so be careful. Same as `rm -r`.
@@ -182,8 +174,7 @@ Fsep.emptyFolder(path).then(function () {
 });
 ```
 
-
-### scaffold(paths, data)
+### scaffold(path, data)
 Requires a path and an object or array. Makes files and folders based on object or array. End points are assumed to be file names.
 ```js
 const Fsep = require('fsep');
@@ -212,7 +203,6 @@ Fsep.scaffold(path, data).then(function () {
 	console.error(error);
 });
 ```
-
 
 ### readFiles(paths, options)
 Reads an array of files asynchronously. The result is an array of files.

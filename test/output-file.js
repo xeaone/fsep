@@ -1,9 +1,10 @@
-var Fsep = require('../index');
-var Path = require('path');
+const Fsep = require('../index');
+const Path = require('path');
 
-var path = 'rw/stuff/la/blue.js';
-var data = 'hello';
+const path = Path.join(__dirname, 'rw/stuff/la/blue.js');
 
-Fsep.outputFile(path, data, 'utf8').then(function () {
+Promise.resolve().then(function () {
+	return Fsep.outputFile(path, 'hello', 'utf8');
+}).then(function () {
 	console.log('done');
 }).catch(function (error) { throw error; });

@@ -1,15 +1,15 @@
 {
 	"name": "fsep",
-	"version": "2.1.0",
+	"version": "3.0.0",
 	"description": "Fsep is a library that promisifies the native node FS operation and brings extras into the mix.",
 	"main": "index.js",
 	"directories": {
 		"test": "test"
 	},
-	"dependencies": {
-		"promise-tool": "^1.1.1"
+	"engines": {
+		"node": ">= 7.6.0"
 	},
-	"devDependencies": {},
+	"dependencies": {},
 	"scripts": {
 		"exist": "node ./test/exist.js",
 		"ensureFile": "node ./test/ensure-file.js",

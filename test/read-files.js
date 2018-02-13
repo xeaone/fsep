@@ -1,15 +1,19 @@
-var Fsep = require('../index');
-var Path = require('path');
+const Fsep = require('../index');
+const Path = require('path');
 
-var paths = [
-	Path.join(process.cwd(), 'rw/one.txt'),
-	Path.join(process.cwd(), 'rw/two.txt')
+const paths = [
+	Path.join(__dirname, 'rw/one.txt'),
+	Path.join(__dirname, 'rw/two.txt')
 ];
 
-Fsep.readFiles(paths).then(function (files) {
+const options = {
+	encoding: 'utf8'
+};
 
+Promise.resolve().then(function () {
+	return Fsep.readFiles(paths, options);
+}).then(function (files) {
 	console.log(files);
-
 }).catch(function (error) {
-	throw error;
+	console.error(error);
 });

@@ -1,26 +1,21 @@
 const Path = require('path');
 const Fsep = require('../index.js');
 
-var path = Path.join(process.cwd(), 'rw');
+var path = Path.join(__dirname, 'rw');
 
-// var data = {
-// 	root: {
-// 		one: 'one.txt',
-// 		two: 'two.txt',
-// 		ar: [
-// 			'three.txt',
-// 			'four.txt'
-// 		]
-// 	}
-// };
+var data = {
+	root: {
+		one: 'one.txt',
+		two: 'two.txt',
+		ar: [
+			'three.txt',
+			'four.txt'
+		]
+	}
+};
 
-var data = [
-	'five.txt',
-	'six.txt'
-];
-
-Fsep.scaffold(path, data).then(function () {
-	console.log('done');
+Promise.resolve().then(function () {
+	return Fsep.scaffold(path, data);
 }).catch(function (error) {
-	throw error;
+	console.error(error);
 });
