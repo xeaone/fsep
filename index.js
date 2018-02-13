@@ -3,6 +3,12 @@
 const FsDefault = require('./lib/fs');
 
 const FsExtra = {
+
+	readFolder: require('./lib/read-folder'),
+	removeFile: require('./lib/remove-file'),
+	removeFolder: require('./lib/remove-folder'),
+	writeFolder: require('./lib/write-folder'),
+
 	walk: require('./lib/walk'),
 	exist: require('./lib/exist'),
 	scaffold: require('./lib/scaffold'),

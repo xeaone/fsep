@@ -1,13 +1,10 @@
 
-
 # FSEP
-Is a library that promisifies the native node FS operation and brings extras into the mix. Fsep follows the same naming schemes as fs-extra. Contributions Welcome! Submit a pull request. Fsep has **One Dependency**.
-
+Is a library that promisifies the native node FS operation and brings extras into the mix. Fsep has **No Dependency**.
 
 ## Features
 - Native node.js Fs methods (promisified)
 - Only Promises
-
 
 ## TODO
 - copy
@@ -37,6 +34,11 @@ Is a library that promisifies the native node FS operation and brings extras int
 - scaffold
 - readFiles
 - readWriteLine
+
+- readFolder
+- removeFile
+- removeFolder
+- writeFolder
 
 
 ### walk(path, [options])
@@ -248,6 +250,18 @@ Fsep.readWriteLine(options).then(function () {
 	console.error(error);
 });
 ```
+
+### readFolder
+Alias for `Fs.readdir`.
+
+### removeFile
+Alias for `Fs.unlink`.
+
+### removeFolder
+Alias for `Fs.rmdir`.
+
+### writeFolder
+Alias for `Fs.mkdir`.
 
 ## Authors
 [AlexanderElias](https://github.com/AlexanderElias)
